@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Board /> renders 1`] = `
+<Fragment>
+  <Board__Status>
+    Next player: X
+  </Board__Status>
+  <Board__BoardRow>
+    <Square
+      onClick={[Function]}
+      value={null}
+    />
+    <Square
+      onClick={[Function]}
+      value={null}
+    />
+    <Square
+      onClick={[Function]}
+      value={null}
+    />
+  </Board__BoardRow>
+  <Board__BoardRow>
+    <Square
+      onClick={[Function]}
+      value={null}
+    />
+    <Square
+      onClick={[Function]}
+      value={null}
+    />
+    <Square
+      onClick={[Function]}
+      value={null}
+    />
+  </Board__BoardRow>
+  <Board__BoardRow>
+    <Square
+      onClick={[Function]}
+      value={null}
+    />
+    <Square
+      onClick={[Function]}
+      value={null}
+    />
+    <Square
+      onClick={[Function]}
+      value={null}
+    />
+  </Board__BoardRow>
+</Fragment>
+`;

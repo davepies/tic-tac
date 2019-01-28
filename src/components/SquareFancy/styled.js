@@ -1,5 +1,18 @@
 import styled from '@emotion/styled';
 
+export const Wrapper = styled.div`
+	perspective: 1000px;
+`;
+
+export const Flipper = styled.div`
+`;
+
+export const Front = styled.div`
+`;
+
+export const Back = styled.div`
+`;
+
 export const Button = styled.button`
     width: ${({ theme }) => theme.dimensions.squareSize};
     line-height: ${({ theme }) => theme.dimensions.squareSize};

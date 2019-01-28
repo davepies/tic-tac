@@ -1,64 +1,68 @@
 import React from 'react';
-import styled from 'styled-components';
 
-import { calculateWinner } from '../helpers';
+import { calculateWinner } from '../../common/helpers';
 
-import Square from './Square';
+import Square from '../Square';
+import { BoardRow, Status, ResetButton } from './styled';
 
-const BoardRow = styled.div`
-    clear: both;
-    content: "";
-    display: table;
-`;
+class Board extends React.Component {
 
-const Status = styled.div`
-    margin-bottom: 10px;
-`;
-
-const ResetButton = styled.button`
-    background: green;
-`;
-
-interface IBoardState {
-    squares: (string | null)[];
-    xIsNext: boolean
-}
-
-class Board extends React.Component<{}, IBoardState> {
-    initialState: IBoardState = {
+    initialState = {
         squares: [
             null, null, null,
             null, null, null,
             null, null, null
         ],
-        xIsNext: true
+        xIsNext: true,
+        history: [[
+            null, null, null,
+            null, null, null,
+            null, null, null
+        ]],
+        historyIndex: 0
     }
 
-    state: IBoardState = { ...this.initialState };
+    state = { ...this.initialState };
 
     resetGame() {
         this.setState(this.initialState)
     }
 
-    updateGame(squareToUpdateIndex: number): void {
-        const { squares, xIsNext } = this.state;
+    updateGame(squareToUpdateIndex) {
+        const { squares, xIsNext, history, historyIndex } = this.state;
         const nextSquares = [...squares];
+        const nextHistory = [...history];
+        const nextHistoryIndex = historyIndex + 1;
 
-
-        // square has already been set
+        // the square has already been set
         if (nextSquares[squareToUpdateIndex] != null) {
             return;
         }
 
         nextSquares[squareToUpdateIndex] = xIsNext ? 'X' : 'O';
+        nextHistory.push(nextSquares);
 
         this.setState({
+            history: nextHistory,
+            historyIndex: nextHistoryIndex,
             squares: nextSquares,
             xIsNext: !xIsNext
         });
     }
 
-    renderSquare(i: number): JSX.Element {
+    backInHistory() {
+        const { history, historyIndex } = this.state;
+
+        const nextHistoryIndex = (historyIndex - 1) > -1 ? historyIndex - 1 : historyIndex;
+        const nextSquares = history[nextHistoryIndex];
+
+        this.setState({
+            historyIndex: nextHistoryIndex,
+            squares: nextSquares
+        });
+    }
+
+    renderSquare(i) {
         return (
             <Square
                 value={this.state.squares[i]}
@@ -67,7 +71,7 @@ class Board extends React.Component<{}, IBoardState> {
         );
     }
 
-    renderGameOver(winner: string): JSX.Element {
+    renderGameOver(winner) {
         return (
             <div>
                 We have a winner!!! {winner} earns 1.0000000 AUD
@@ -104,6 +108,7 @@ class Board extends React.Component<{}, IBoardState> {
                     {this.renderSquare(7)}
                     {this.renderSquare(8)}
                 </BoardRow>
+                <button onClick={() => this.backInHistory()}>Back in History</button>
             </>
         );
     }

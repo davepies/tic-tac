@@ -2,7 +2,7 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import sinon from 'sinon';
 
-import Square from './Square';
+import Square from './';
 
 test('<Square /> renders', () => {
     const wrapper = shallow(<Square value={'X'} />);

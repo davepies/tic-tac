@@ -5,6 +5,7 @@
   "dependencies": {
     "@babel/core": "7.1.6",
     "@babel/plugin-transform-react-jsx": "^7.2.0",
+    "@emotion/babel-preset-css-prop": "^10.0.6",
     "@emotion/core": "^10.0.6",
     "@emotion/styled": "^10.0.6",
     "@svgr/webpack": "2.4.1",
@@ -130,7 +131,8 @@
       "babel-plugin-emotion"
     ],
     "presets": [
-      "react-app"
+      "react-app",
+      "@emotion/babel-preset-css-prop"
     ]
   },
   "devDependencies": {

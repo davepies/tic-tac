@@ -2,10 +2,7 @@
 
 exports[`<Board /> renders 1`] = `
 <Fragment>
-  <styled__Status>
-    Next player: X
-  </styled__Status>
-  <styled__BoardRow>
+  <BoardRow>
     <Square
       onClick={[Function]}
       value={null}
@@ -18,8 +15,8 @@ exports[`<Board /> renders 1`] = `
       onClick={[Function]}
       value={null}
     />
-  </styled__BoardRow>
-  <styled__BoardRow>
+  </BoardRow>
+  <BoardRow>
     <Square
       onClick={[Function]}
       value={null}
@@ -32,8 +29,8 @@ exports[`<Board /> renders 1`] = `
       onClick={[Function]}
       value={null}
     />
-  </styled__BoardRow>
-  <styled__BoardRow>
+  </BoardRow>
+  <BoardRow>
     <Square
       onClick={[Function]}
       value={null}
@@ -46,7 +43,7 @@ exports[`<Board /> renders 1`] = `
       onClick={[Function]}
       value={null}
     />
-  </styled__BoardRow>
+  </BoardRow>
   <button
     onClick={[Function]}
   >

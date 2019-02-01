@@ -1,15 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-import { Button } from './styled';
+import { Wrapper, Flipper, Front, Back } from './styled';
 
-const Square = (props) => {
-    const { value, onClick } = props;
-    const isOccupied = value !== null;
-    return (
-        <Button onClick={onClick} occupied={isOccupied}>
-            {value}
-        </Button>
-    );
+class Square extends Component {
+    state = {
+        isFlipped: false
+    };
+
+    flip = () => this.setState({ isFlipped: true })
+
+    render() {
+        const {value, onClick } = this.props;
+        const { isFlipped } = this.state;
+
+        return (
+            <Wrapper onClick={() => { this.flip(); onClick();  }}>
+                <Flipper isFlipped={isFlipped}>
+                    <Front></Front>
+                    <Back>{value}</Back>
+                </Flipper>
+            </Wrapper>
+        );
+    }
 }
 
 export default Square;

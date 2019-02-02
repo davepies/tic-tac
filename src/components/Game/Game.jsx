@@ -3,7 +3,7 @@ import React from 'react';
 import Board from '../Board/Board';
 
 import { Wrapper, Status, Info, ResetButton } from './styled';
-import { calculateWinner } from '../../common/helpers';
+import { winning } from '../../common/helpers';
 
 class Game extends React.Component {
 
@@ -12,31 +12,34 @@ class Game extends React.Component {
             // empty board - same initial data as Board
             squares: Array(9).fill(null),
         }],
-        xIsNext: true
+        currentPlayer: 'X',
+        winner: null
     }
 
     state = { ...this.initialState };
 
     handleClick(i) {
-        const { history, xIsNext } = this.state;
+        const { history, currentPlayer } = this.state;
         const { squares } = history[history.length - 1];
 
-        const nextSquares = {
+        const nextSquares = [
             ...squares
-        };
+        ];
 
-        if (calculateWinner(squares) || squares[i]) {
+        // square is taken
+        if (squares[i]) {
             return;
         }
 
-        nextSquares[i] = xIsNext ? 'X' : 'O';
+        nextSquares[i] = currentPlayer;
 
         this.setState({
             history: [
                 ...history,
                 { squares: nextSquares }
             ],
-            xIsNext: !xIsNext
+            currentPlayer: currentPlayer === 'X' ? 'O' : 'X',
+            winner: winning(nextSquares, currentPlayer) ? currentPlayer : null
         })
     }
 
@@ -48,32 +51,30 @@ class Game extends React.Component {
         return (
             <div>
                 We have a winner!!! {winner} earns 1.0000000 AUD
-                    <ResetButton onClick={() => this.resetGame()}>Play again</ResetButton>
+                <ResetButton onClick={() => this.resetGame()}>Play again</ResetButton>
             </div>
         )
     }
 
     render() {
-        const { history, xIsNext } = this.state;
-
+        const { history, currentPlayer, winner } = this.state;
+        const { match: { params: { players } } } = this.props;
         const { squares } = history[history.length - 1];
-        const winner = calculateWinner(squares);
 
         if (winner) {
-            return this.renderGameOver(winner);
+            return this.renderGameOver();
         }
-
-        const statusMessage = `Next player: ${xIsNext ? 'X' : 'O'}`;
 
         return (
             <Wrapper>
+                <h2>{players}</h2>
                 <div>
                     <Board
                         squares={squares}
                         onClick={(i) => this.handleClick(i)}
                     />
                     <Info>
-                        <Status>{statusMessage}</Status>
+                        <Status>Player: <strong>{currentPlayer}</strong></Status>
                         <ol>{/* TODO */}</ol>
                     </Info>
                 </div>

@@ -44,10 +44,5 @@ exports[`<Board /> renders 1`] = `
       value={null}
     />
   </BoardRow>
-  <button
-    onClick={[Function]}
-  >
-    Back in History
-  </button>
 </Fragment>
 `;

@@ -7,7 +7,18 @@ export const Wrapper = styled.div`
 `;
 
 export const Status = styled.div`
-    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    color: ${({ theme }) => theme.colors.secondary };
+
+    strong {
+        display: inline-block;
+        margin-left: .25em;
+        font-size: 1.5em;
+        color: ${({ theme }) => theme.colors.primary }
+    }
 `;
 
 export const Info = styled.div`

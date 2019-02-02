@@ -41,7 +41,7 @@ export const Flipper = styled.div`
 
     background: ${({ theme }) => theme.colors.primary};
     color: ${({ theme }) => theme.colors.secondary};
-    border: 1px solid ${({ theme }) => theme.colors.secondary};
+    border: ${({ theme }) => theme.dimensions.squareBorderWidth } solid ${({ theme }) => theme.colors.secondary};
 
     font-weight: bold;
     text-align: center;

@@ -32,7 +32,6 @@ class Board extends React.Component {
                     {this.renderSquare(7)}
                     {this.renderSquare(8)}
                 </BoardRow>
-                <button onClick={() => this.backInHistory()}>Back in History</button>
             </>
         );
     }

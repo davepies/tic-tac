@@ -1,5 +1,6 @@
 import React from 'react';
 import { configure, addDecorator } from '@storybook/react';
+import { withKnobs } from '@storybook/addon-knobs';
 
 import { ThemeProvider } from 'emotion-theming';
 import { theme } from '../src/common/theme';
@@ -13,6 +14,7 @@ function loadStories() {
 const StyledComponentsThemeDecorator = (storyFn) =>
   <ThemeProvider theme={theme}>{storyFn()}</ThemeProvider>
 
+addDecorator(withKnobs);
 addDecorator(StyledComponentsThemeDecorator);
 
 configure(loadStories, module);

@@ -2,8 +2,14 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
+import { text } from '@storybook/addon-knobs';
 
-import FancySquare from '.';
+import Square from '.';
 
-storiesOf('FancySquare', module)
-  .add('Front', () => <FancySquare onClick={action('clicked the square')} value='X' />)
+storiesOf('Square', module)
+  .add('Default', () => {
+    const value = text('Value', 'X');
+    return (
+      <Square onClick={action('clicked the square')} value={value} />
+    );
+  });

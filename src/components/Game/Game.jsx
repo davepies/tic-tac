@@ -58,16 +58,16 @@ class Game extends React.Component {
 
     render() {
         const { history, currentPlayer, winner } = this.state;
-        const { match: { params: { players } } } = this.props;
+        const { numberOfPlayers } = this.props;
         const { squares } = history[history.length - 1];
 
         if (winner) {
-            return this.renderGameOver();
+            return this.renderGameOver(winner);
         }
 
         return (
             <Wrapper>
-                <h2>{players}</h2>
+                <h2>{numberOfPlayers}</h2>
                 <div>
                     <Board
                         squares={squares}

@@ -19,7 +19,7 @@ export const shine = keyframes`
         -webkit-filter: hue-rotate(0deg);
     }
     to {
-        -webkit-filter: hue-rotate(-360deg);
+        -webkit-filter: hue-rotate(-180deg);
     }
 `;
 
@@ -50,7 +50,7 @@ export const gradientBorder = (gradient, borderWidth) => {
                 left: calc(-1 * var(--borderWidth));
                 height: calc(100% + var(--borderWidth) * 2);
                 width: calc(100% + var(--borderWidth) * 2);
-                background: ${gradient || defaultGradient};
+                background: ${gradient};
                 border-radius: calc(2 * var(--borderWidth));
                 z-index: -1;
                 animation: ${animatedgradient} 3s ease alternate infinite;
@@ -64,22 +64,26 @@ export const globalStyles = css`
         height: 100%;
     }
     body {
-        min-height: calc(100% - 4rem);
+        min-height: 100%;
         margin: 0;
         padding: 0;
-        border: 2rem solid black;
-        font: 14px Lazer84, "Century Gothic", Futura, sans-serif;
+        font: 14px "Century Gothic", Futura, sans-serif;
         background: ${theme.colors.background};
-        color: #FFEE7B;
+        color: #FF9D00;
     }
 
     h1 {
-        font-size: 4rem;
+        font: 4rem Lazer84; 
         text-align: center;
         background: linear-gradient(#CC0163, #F3D000);
         background-clip: text;
         -webkit-text-fill-color: transparent;
         color: #CC0163;
         animation: ${shine} 15s linear infinite;
+        animation-direction: alternate;
+    }
+
+    a {
+        color: #FF9D00;
     }
 `;

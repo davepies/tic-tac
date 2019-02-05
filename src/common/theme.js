@@ -100,6 +100,7 @@ export const globalStyles = css `
         text-align: center;
         background: linear-gradient(#CC0163, #F3D000);
         background-clip: text;
+        -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         color: #CC0163;
         animation: ${shine} 15s linear infinite;

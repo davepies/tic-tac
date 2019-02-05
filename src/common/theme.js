@@ -1,4 +1,13 @@
-import { css, keyframes } from '@emotion/core';
+import {
+    css,
+    keyframes
+} from '@emotion/core';
+
+import { mixinFontFaceLazer84 } from './fonts';
+
+//
+// ─── THEME USED WITHIN STYLED COMPONENTS ────────────────────────────────────────
+//
 
 export const theme = {
     colors: {
@@ -14,7 +23,11 @@ export const theme = {
     }
 };
 
-export const shine = keyframes`
+//
+// ─── KEYFRAMES ──────────────────────────────────────────────────────────────────
+//
+
+export const shine = keyframes `
     from {
         -webkit-filter: hue-rotate(0deg);
     }
@@ -23,7 +36,7 @@ export const shine = keyframes`
     }
 `;
 
-const animatedgradient = keyframes`
+export const animatedgradient = keyframes `
     0% {
         background-position: 0% 50%;
     }
@@ -35,9 +48,13 @@ const animatedgradient = keyframes`
     }
 `;
 
-export const gradientBorder = (gradient, borderWidth) => {
+//
+// ─── GLOBAL MIXINS ──────────────────────────────────────────────────────────────
+//
+
+export const mixinGradientBorder = (gradient, borderWidth) => {
     return (
-        css`
+        css `
             --borderWidth: ${borderWidth};
             background: #1D1F20;
             position: relative;
@@ -59,7 +76,13 @@ export const gradientBorder = (gradient, borderWidth) => {
     );
 };
 
-export const globalStyles = css`
+
+//
+// ─── GLOBAL STYLES INJECTED VIA GLOBAL ──────────────────────────────────────────
+//
+
+export const globalStyles = css `
+    ${mixinFontFaceLazer84}
     html {
         height: 100%;
     }

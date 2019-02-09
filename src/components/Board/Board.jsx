@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Square from '../Square';
-import { BoardContainer, BoardRow } from './styled';
+import { BoardRow } from './styled';
 
 class Board extends React.Component {
     renderSquare(i) {
@@ -16,7 +16,7 @@ class Board extends React.Component {
 
     render() {
         return (
-            <BoardContainer>
+            <>
                 <BoardRow>
                     {this.renderSquare(0)}
                     {this.renderSquare(1)}
@@ -32,7 +32,7 @@ class Board extends React.Component {
                     {this.renderSquare(7)}
                     {this.renderSquare(8)}
                 </BoardRow>
-            </BoardContainer>
+            </>
         );
     }
 }

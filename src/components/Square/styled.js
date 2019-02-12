@@ -16,17 +16,23 @@ const card = ({ theme }) => css`
     left: 0;
     backface-visibility: hidden;
 
+    border-radius: .5rem;
+
     background: ${theme.colors.primary};
 `;
 
 // components
 export const Wrapper = styled.div`
+    ${dimensions}
 	perspective: 1000px;
+
+    // space between cards
+    margin: .2rem;
+
+    color: ${({ theme }) => theme.colors.secondary};
 `;
 
 export const Flipper = styled.div`
-    ${dimensions};
-
     transform: ${({ isFlipped }) => isFlipped ? 'rotateY(180deg)' : 'none'};
     transition: ${flipSpeed};
 	transform-style: preserve-3d;
@@ -35,13 +41,7 @@ export const Flipper = styled.div`
     line-height: ${({ theme }) => theme.dimensions.squareSize};
 
     font-size: ${({ theme }) => theme.dimensions.squareFontSize};
-    margin-right: -1px;
-    margin-top: -1px;
     padding: 0;
-
-    background: ${({ theme }) => theme.colors.primary};
-    color: ${({ theme }) => theme.colors.secondary};
-    border: ${({ theme }) => theme.dimensions.squareBorderWidth } solid ${({ theme }) => theme.colors.secondary};
 
     font-weight: bold;
     text-align: center;
